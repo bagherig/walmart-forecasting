@@ -48,7 +48,7 @@ Contains information about the dates the products are sold.
     purchases on the examined date. 1 indicates that SNAP purchases are
     allowed.
 
-**File 2: *"sell\_prices.csv"***
+**File 2: *"sell\_prices.csv"* **
 
 Contains information about the price of the products sold per store and
 date.
