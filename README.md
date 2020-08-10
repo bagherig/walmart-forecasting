@@ -13,9 +13,7 @@ unit sales of **3,049 products**, classified in **3 product categories**
 the above-mentioned categories are disaggregated.  The products are sold
 across **ten stores**, located in **three States** (CA, TX, and WI).
 
-The historical data range from **2011-01-29** to **2016-06-19**.
-
-The M5 dataset consists of the following **three (3) files**:
+The historical data range from **2011-01-29** to **2016-06-19**, which consists of the following **three (3) files**:
 
 **File 1: "*calendar.csv"* **
 
