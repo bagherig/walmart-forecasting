@@ -15,7 +15,7 @@ across **ten stores**, located in **three States** (CA, TX, and WI).
 
 The historical data range from **2011-01-29** to **2016-06-19**, which consists of the following **three (3) files**:
 
-**File 1: "calendar.csv"**
+**File 1: "*calendar.csv*"**
 
 Contains information about the dates the products are sold.
 
@@ -48,7 +48,7 @@ Contains information about the dates the products are sold.
     purchases on the examined date. 1 indicates that SNAP purchases are
     allowed.
 
-**File 2: "sell\_prices.csv"**
+**File 2: "*sell\_prices.csv*"**
 
 Contains information about the price of the products sold per store and
 date.
