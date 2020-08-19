@@ -74,14 +74,6 @@ This is confirmed by examining Figure \ref{fig:moy_sales}, which shows the avera
 
 In the rest of this chapter, we will group the items based on their categories, states, stores, and departments and compare their sales data.
 
-\begin{figure}[b!]
-    \centering
-    \captionsetup{width=0.98\textwidth}
-    \fbox{\includegraphics[width=0.98\textwidth]{figures/exploratory_data_analysis/cat_sales.png}}
-    \caption{30-day moving average of sales per category.}
-    \label{fig:cat_sales}
-\end{figure} 
-
 \section{Product Categories}
 \begin{wrapfigure}{r}{0.55\textwidth}
     \vspace{-15pt}
@@ -102,10 +94,11 @@ Moreover, the sales for the \texttt{Foods} category seem to have a lot of oscill
 \begin{figure}[b!]
     \centering
     \captionsetup{width=0.98\textwidth}
-    \fbox{\includegraphics[width=0.98\textwidth]{figures/exploratory_data_analysis/state_sales.png}}
+    \fbox{\includegraphics[width=0.98\textwidth]{figures/exploratory_data_analysis/cat_sales.png}}
     \caption{30-day moving average of sales per category.}
-    \label{fig:state_sales}
+    \label{fig:cat_sales}
 \end{figure} 
+
 
 \section{States}
 \begin{wrapfigure}{r}{0.55\textwidth}
@@ -123,13 +116,14 @@ Since the number of stores is not constant between the states, the values for ea
 By examining the pie charts we see that, on average, the three states have about the same number of unit sales and revenue earned per store, however, the store in state of California are, on average, performing slightly better compared to the stores in Texas and Wisconsin. 
 Furthermore, Figure \ref{fig:state_sales} shows that the state California has more oscillations in its sales compared to the other states.
 
-
 \begin{figure}[b!]
     \centering
-    \fbox{\includegraphics[width=0.98\textwidth]{figures/exploratory_data_analysis/store_sales.png}}
-    \caption{30-day moving average of sales per store.}
-    \label{fig:store_sales}
+    \captionsetup{width=0.98\textwidth}
+    \fbox{\includegraphics[width=0.98\textwidth]{figures/exploratory_data_analysis/state_sales.png}}
+    \caption{30-day moving average of sales per state.}
+    \label{fig:state_sales}
 \end{figure} 
+
 
 \section{Stores}
 \begin{wrapfigure}{r}{0.55\textwidth}
@@ -147,13 +141,21 @@ From this figure, we can see that store \texttt{CA\_3} has the highest number of
 We can further confirm this by examining the time-series of the number of sales per store, shown in Figure \ref{fig:store_sales}.
 Moreover, this figure shows that store \texttt{CA\_3} has a lot more volatility in its sales than the other stores.
 
+\begin{figure}[b!]
+    \centering
+    \fbox{\includegraphics[width=0.98\textwidth]{figures/exploratory_data_analysis/store_sales.png}}
+    \caption{30-day moving average of sales per store.}
+    \label{fig:store_sales}
+\end{figure} 
+
+
 \section{Departments}
 \begin{wrapfigure}{r}{0.55\textwidth}
     \vspace{-10pt}
     \centering
     \captionsetup{width=0.52\textwidth}
     \fbox{\includegraphics[width=0.52\textwidth]{figures/exploratory_data_analysis/sales_rev_depts.png}}
-    \caption{Proportion of units sold and revenue earned per store.}
+    \caption{Proportion of units sold and revenue earned per department.}
     \label{fig:depts_rev_stores}
     \vspace{-10pt}
 \end{wrapfigure}
@@ -166,6 +168,6 @@ Moreover, Figure \ref{fig:dept_sales} shows a 30-day moving average of the numbe
 \begin{figure}[H]
     \centering
     \fbox{\includegraphics[width=0.98\textwidth]{figures/exploratory_data_analysis/dept_sales.png}}
-    \caption{30-day moving average of sales per store.}
+    \caption{30-day moving average of sales per department.}
     \label{fig:dept_sales}
 \end{figure}

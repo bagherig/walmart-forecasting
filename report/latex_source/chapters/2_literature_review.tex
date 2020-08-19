@@ -27,8 +27,8 @@ However, due to the small amount of data available (3 years), variances caused b
 On a separate note, many methods do not take into account external variables and factors, such as price changes and promotions and have been shown to only perform well in periods without the influence of any external factors \cite{c2, c3}. 
 In practice, in order to incorporate the effects of promotions on the sales, many retailers use a base-times-lift approach, where the sales are first forecasted based on a simple time-series and then adjusted based on the incoming promotions \cite{c4}. 
 Recent studies have focused on optimizing these adjustments, which are made based on promotions and other external factors \cite{c4}. 
-In an alternative approach, hybrid models have been used in order to take advantage of the strengths of different models together, which helps capture both the temporal information in the data, as well as the correlation between the demand and the external factors \cite{c5, c8}. 
-The complex behaviour of a time-series cannot be explained by a single model if, for example, the time-series contains both linear and nonlinear correlations \cite{c12}.
+In an alternative approach, the effects of external factors can be directly incorporated into the forecasting models.
+For instance, hybrid models have been used in order to take advantage of the strengths of different models, which helps capture both the temporal information in the data, as well as the correlation between the demand and the external factors \cite{c5, c8}. 
 Hybrid models are usually constructed in a sequential manner, where the first component is fitted to the data first, and then the second component is fitted to the residuals of the first component \cite{c12}.
 The residuals of a model contain the information that could not be captured by that model \cite{c8}.
 However, hybrid models are not guaranteed to perform better than single models and model selection is still a crucial aspect of hybrid models \cite{c12}.

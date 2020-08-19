@@ -2,6 +2,7 @@
 \ProvidesClass{ryerson}
 \NeedsTeXFormat{LaTeX2e}
 
+
 \newcommand{\setAuthor}[1]{\author{#1}}
 \newcommand{\setTitle}[1]{\title{#1}}
 
@@ -46,6 +47,11 @@
 
 \newcommand{\define}[1]{\index{#1}\emph{#1}}
 \newcommand{\indexText}[1]{\index{#1}#1}
+
+\providecommand{\keywords}[1]
+{
+  \textbf{\textit{Keywords---}} #1
+}
 
 \newcommand\frontmatter{
 	\cleardoublepage
@@ -305,7 +311,7 @@
 	\empty
 	\ClassWarning {ryerson} {No author's declaration. Use `setAuthorsDeclaration' commnad}
 }{
-\section*{\centering{AUTHOR'S DECLARATION FOR ELECTRONIC SUBMISSION OF A THESIS}}
+\section*{\centering{AUTHOR'S DECLARATION FOR ELECTRONIC SUBMISSION OF A MRP}}
 \@authorsDeclarationText
 \clearpage
 }
@@ -375,6 +381,10 @@
 %                    9. List of Algorithms                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \listofalgorithms
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                    9. List of Appendices                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\listofappendices
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                     Main body                              %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

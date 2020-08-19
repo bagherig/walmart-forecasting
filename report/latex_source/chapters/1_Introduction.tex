@@ -4,6 +4,8 @@ This volatility is dependent on many external factors, such as holidays, events,
 Hence, it is necessary to take into account the effects of these external factors when forecasting future sales.
 In some approaches, the manager guides the forecasting model based on his/her knowledge of the external factors by using fuzzy logic.
 However, recent studies have focused on creating models that are able to directly take into account the effects of these external factors.
+Moreover, most retail stores contain multiple sale channels and require sale forecasts longer than one day ahead in the future, which adds another level of complexity to the problem.
 
-In this paper, we will compare the performance of three models, which consist of Long Short-Term Memory (LSTM), Multi-Layer Perceptron (MLP), and LightGBM (LGBM) models.
-Furthermore, the LSTM model and the best performing model between the MLP and LGBM models will be used to construct a hybrid model to check if it is able to improve the performance compared to the two singular models.
+In this paper, we will compare the performance of three models, which consist of Long Short-Term Memory (LSTM), Multi-Layer Perceptron (MLP), and LightGBM (LGBM) models, in forecasting 28 days ahead in the future.
+Additionally, the LSTM model and the best performing model between the MLP and LGBM models will be used to construct a hybrid model to check if it is able to improve the performance compared to the two singular models.
+Furthermore, the hyperparameters of all models will be optimized using Bayesian optimization.

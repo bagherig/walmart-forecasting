@@ -33,6 +33,7 @@ Furthermore, another possible way to improve the performance of the hybrid model
 In this project, the hyperparameters of the singular models were used in the hybrid model.
 Since the input data for the two components are similar to the input data of the singular models, this can be considered a case of transfer learning, and hence the same hyperparameters should be able to perform relatively well.
 However, with further hyperparameter optimization, we should still be able to find better hyperparameters for each component of the hybrid model.
+Nevertheless, hybrid models are not guaranteed to outperform singular models and model selection has a significant influence on their performance as well \cite{c12}.
 
 Another factor to consider when evaluating the performances is the choice of features used.
 The main data for the LSTM model included the sales time-series for each item, which is what the model will be predicting. 
@@ -41,7 +42,7 @@ The seven features used from the dataset include the current day number, weekday
 Moreover, two additional features were created from the available events data, which represented whether an event exists on the day of the prediction, and whether an event exists the day after the prediction.
 The reason that the model was provided with information about the events of the next day is that people tend to go shopping before an event rather than the day of the event.
 For example, in case of Halloween, a lot of people tend to buy their candies before Halloween starts rather than on the same day.
-Moreover, I also tried providing the model with the price information of each item, as well as the exact name and type of each event, however, the performance of the LSTM model was significantly hindered, and hence, these features were omitted.
+Moreover, we also tried providing the model with the price information of each item, as well as the exact name and type of each event, however, the performance of the LSTM model was significantly hindered, and hence, these features were omitted.
 This is possible due to the large number of features added, since there is a new feature added for the price of each item, and hence, we are essentially doubling our feature set.
 
 \begin{figure}[b!]
@@ -56,7 +57,7 @@ Note that all lag and rolling mean/std features were shifted by 28 days, since w
 Shifting these features by the value of the forecasting horizon prevents the error of the model to propagate through later predictions.
 For example, if we introduce a lag feature with an interval of 7 and try to predict 28 days ahead, we will not have the actual sale values after the seventh forecast and we will have to use the predicted values instead. 
 This means that if there is an error in the predictions, the error will propagate through later forecasts as well.
-However, I also tried providing the MLP and LGBM models with lag and rolling mean/std features that are within the forecasting horizon. 
+However, we also tried providing the MLP and LGBM models with lag and rolling mean/std features that are within the forecasting horizon. 
 Even though this boosted the performances on the 1-day ahead forecasts, it significantly hindered the performances on the 28-days ahead forecasts.
 Although, it is important to note the importance of recent sales in the foretelling the future sales. 
 Having knowledge of recent sale values can greatly help with the predictions, however, this comes with the trade-off of error propagation when forecasting longer horizons.
