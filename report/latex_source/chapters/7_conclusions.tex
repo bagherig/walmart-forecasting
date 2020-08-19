@@ -1,0 +1,14 @@
+The performance of the LGBM model highlights the potential of boosting methods in improving the overall performance. 
+Compared to the MLP model, which had the same preprocessing procedure as the LGBM model, not only was the LGBM model easier to construct, but it was also able to train much faster, which shows the ability of LGBM models in working with large datasets.
+Moreover, from the results of the LSTM and MLP models, we can clearly see the ability of LSTM models in working with time-series data compared to regular deep learning models.
+
+Another goal of this paper was to evaluate the capabilities of hybrid models.
+Unlike the study done in \cite{c8}, we did not find hybrid models to be useful for improving the performance.
+In our case, the performance of the hybrid model was closely tied to the performance of its first component.
+Future studies should further explore the capabilities of hybrid models and how much their performance depends on the performance of the first component.
+Moreover, future work on this dataset can focus on further hyperparameter optimization and feature engineering to improve the performance of the LSTM model.
+
+All models in this paper were trained on the entire dataset.
+However, the results show that the models were unable to confidently forecast the sales for the \texttt{FOODS\_3} department. 
+Hence, future studies studies can try to enhance the performances by training a separate model for the \texttt{FOODS\_3} department, or even one model per department.
+It is however important to balance the number of models in order to not lose too much inter-dependency between the different item groups.

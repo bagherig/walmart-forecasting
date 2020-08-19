@@ -1,0 +1,120 @@
+% LSTM
+%% Results
+\newcommand\lstmTrnME{0.02139}
+\newcommand\lstmValME{-0.00857}
+\newcommand\lstmTstME{-0.10333}
+\newcommand\lstmTstMonME{-0.10991}
+
+\newcommand\lstmTrnRMSE{2.10657}
+\newcommand\lstmValRMSE{2.11495}
+\newcommand\lstmTstRMSE{2.24916}
+\newcommand\lstmTstMonRMSE{2.27780}
+
+\newcommand\lstmTrnRMSSE{0.78320}
+\newcommand\lstmValRMSSE{0.82372}
+\newcommand\lstmTstRMSSE{0.85677}
+\newcommand\lstmTstMonRMSSE{0.80511}
+
+%% Hyperparameters
+\newcommand\lstmParamsNlayers{3}
+\newcommand\lstmParamsNunits{405}
+\newcommand\lstmParamsScale{0.752032}
+\newcommand\lstmParamsLR{0.000534}
+\newcommand\lstmParamsDecay{0.000445}
+\newcommand\lstmParamsDropout{0.225848}
+\newcommand\lstmParamsNorm{0}
+\newcommand\lstmParamsBatch{59}
+\newcommand\lstmParamsSteps{23}
+
+\newcommand\lstmParamsRangeNlayers{Integer(3, 5)}
+\newcommand\lstmParamsRangeNunits{Integer(128, 512)}
+\newcommand\lstmParamsRangeScale{Float(0.2, 1)}
+\newcommand\lstmParamsRangeLR{Float(0.0001, 0.01)}
+\newcommand\lstmParamsRangeDecay{Float(0, 0.001)}
+\newcommand\lstmParamsRangeDropout{Float(0, 0.3)}
+\newcommand\lstmParamsRangeNorm{Integer(0, 1)}
+\newcommand\lstmParamsRangeBatch{Float(32, 128)}
+\newcommand\lstmParamsRangeSteps{Integer(14, 56)}
+
+% MLP
+%% Results
+\newcommand\annTrnME{-0.05645}
+\newcommand\annValME{-0.03643}
+\newcommand\annTstME{-0.08568}
+\newcommand\annTstMonME{\annTstME}
+
+\newcommand\annTrnRMSE{2.73888}
+\newcommand\annValRMSE{2.24467}
+\newcommand\annTstRMSE{2.29376}
+\newcommand\annTstMonRMSE{\annTstRMSE}
+
+\newcommand\annTrnRMSSE{0.94049}
+\newcommand\annValRMSSE{0.87421}
+\newcommand\annTstRMSSE{0.87376}
+\newcommand\annTstMonRMSSE{0.81075}
+
+%% Hyperparameters
+\newcommand\annParamsNlayers{4}
+\newcommand\annParamsNunits{467}
+\newcommand\annParamsScale{0.699088}
+\newcommand\annParamsLR{0.004514}
+\newcommand\annParamsDecay{0.000478}
+\newcommand\annParamsDropout{0.006266}
+\newcommand\annParamsNorm{0}
+\newcommand\annParamsBatch{57798}
+
+\newcommand\annParamsRangeNlayers{Integer(3, 5)}
+\newcommand\annParamsRangeNunits{Integer(64, 512)}
+\newcommand\annParamsRangeScale{Float(0.2, 1)}
+\newcommand\annParamsRangeLR{Float(0.0001, 0.01)}
+\newcommand\annParamsRangeDecay{Float(0, 0.001)}
+\newcommand\annParamsRangeDropout{Float(0, 0.3)}
+\newcommand\annParamsRangeNorm{Integer(0, 1)}
+\newcommand\annParamsRangeBatch{Float(32000, 100000)}
+
+% LGBM
+%% Results
+\newcommand\lgbmTrnME{-0.00001}
+\newcommand\lgbmValME{-0.00679}
+\newcommand\lgbmTstME{-0.07056}
+\newcommand\lgbmTstMonME{\lgbmTstME}
+
+\newcommand\lgbmTrnRMSE{2.34224}
+\newcommand\lgbmValRMSE{2.11933}
+\newcommand\lgbmTstRMSE{2.18648}
+\newcommand\lgbmTstMonRMSE{\lgbmTstRMSE}
+
+\newcommand\lgbmTrnRMSSE{0.80429}
+\newcommand\lgbmValRMSSE{0.82540}
+\newcommand\lgbmTstRMSSE{0.83289}
+\newcommand\lgbmTstMonRMSSE{0.77283}
+
+%% Hyperparameters
+\newcommand\lgbmParamsLR{0.097892}
+\newcommand\lgbmParamsFeatFrac{0.553332}
+\newcommand\lgbmParamsLambda{0.219554}
+\newcommand\lgbmParamsNleaves{749}
+\newcommand\lgbmParamsMinData{1534}
+
+\newcommand\lgbmParamsRangeLR{Float(0.001, 0.5)}
+\newcommand\lgbmParamsRangeFeatFrac{Float(0.2, 1)}
+\newcommand\lgbmParamsRangeLambda{Float(0, 0.3)}
+\newcommand\lgbmParamsRangeNleaves{Integer(50, 5000)}
+\newcommand\lgbmParamsRangeMinData{Integer(10, 5000)}
+
+% Hybrid
+%% Results
+\newcommand\hybTrnME{0.01417}
+\newcommand\hybValME{-0.04265}
+\newcommand\hybTstME{-0.14021}
+\newcommand\hybTstMonME{-0.11916}
+
+\newcommand\hybTrnRMSE{2.10155}
+\newcommand\hybValRMSE{2.11706}
+\newcommand\hybTstRMSE{2.26268}
+\newcommand\hybTstMonRMSE{2.25698}
+
+\newcommand\hybTrnRMSSE{0.78133}
+\newcommand\hybValRMSSE{0.82453}
+\newcommand\hybTstRMSSE{0.86192}
+\newcommand\hybTstMonRMSSE{0.79775}

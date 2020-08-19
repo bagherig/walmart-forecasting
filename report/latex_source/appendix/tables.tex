@@ -1,0 +1,140 @@
+\chapter{Tables}
+
+\section*{Evaluation Metrics}
+\begin{table}[h!]
+    \parbox{.45\linewidth}{
+    \centering
+    \caption{The evaluation metrics of the LSTM model.}
+    \label{tab:lstm_results}
+    \begin{tabular}{ | c | c c c | }
+        \hline
+        Dataset & ME & RMSE & RMSSE \Tstrut\Bstrut \\
+        \hline
+        \makecell{Train\\(1-day)} & \lstmTrnME & \lstmTrnRMSE & \lstmTrnRMSSE \Tstrut\Bstrut\\[1ex]
+        \hline
+        \makecell{Valid\\(1-day)} & \lstmValME & \lstmValRMSE & \lstmValRMSSE \Tstrut\Bstrut\\[1ex]
+        \hline
+        \makecell{Test\\(1-day)} & \lstmTstME & \lstmTstRMSE & \lstmTstRMSSE \Tstrut\Bstrut\\[1ex]
+        \hline
+        \makecell{Test\\(28-days)} & \lstmTstMonME & \lstmTstMonRMSE & \lstmTstMonRMSSE \Tstrut\Bstrut\\[1ex]
+        \hline
+    \end{tabular}}
+    \hfill
+    \parbox{.45\linewidth}{
+    \centering
+    \caption{The evaluation metrics of the MLP model.}
+    \label{tab:ann_results}
+    \begin{tabular}{ | c | c c c | }
+        \hline
+        Dataset & ME & RMSE & RMSSE \Tstrut\Bstrut \\
+        \hline
+        \makecell{Train\\(1-day)} & \annTrnME & \annTrnRMSE & \annTrnRMSSE \Tstrut\Bstrut\\[1ex]
+        \hline
+        \makecell{Valid\\(1-day)} & \annValME & \annValRMSE & \annValRMSSE \Tstrut\Bstrut\\[1ex]
+        \hline
+        \makecell{Test\\(1-day)} & \annTstME & \annTstRMSE & \annTstRMSSE \Tstrut\Bstrut\\[1ex]
+        \hline
+        \makecell{Test\\(28-days)} & \annTstMonME & \annTstMonRMSE & \annTstMonRMSSE \Tstrut\Bstrut\\[1ex]
+        \hline
+    \end{tabular}}
+    \vspace{10mm}
+        
+    \parbox{.45\linewidth}{
+    \centering
+    \caption{The evaluation metrics of the LGBM model.}
+    \label{tab:lgbm_results}
+    \begin{tabular}{ | c | c c c | }
+        \hline
+        Dataset & ME & RMSE & RMSSE \Tstrut\Bstrut \\
+        \hline
+        \makecell{Train\\(1-day)} & \lgbmTrnME & \lgbmTrnRMSE & \lgbmTrnRMSSE \Tstrut\Bstrut\\[1ex]
+        \hline
+        \makecell{Valid\\(1-day)} & \lgbmValME & \lgbmValRMSE & \lgbmValRMSSE \Tstrut\Bstrut\\[1ex]
+        \hline
+        \makecell{Test\\(1-day)} & \lgbmTstME & \lgbmTstRMSE & \lgbmTstRMSSE \Tstrut\Bstrut\\[1ex]
+        \hline
+        \makecell{Test\\(28-days)} & \lgbmTstMonME & \lgbmTstMonRMSE & \lgbmTstMonRMSSE \Tstrut\Bstrut\\[1ex]
+        \hline
+    \end{tabular}}
+    \hfill
+    \parbox{.45\linewidth}{
+    \centering
+    \caption{The evaluation metrics of the hybrid LSTM-LGBM model.}
+    \label{tab:hyb_results}
+    \begin{tabular}{ | c | c c c | }
+        \hline
+        Dataset & ME & RMSE & RMSSE \Tstrut\Bstrut \\
+        \hline
+        \makecell{Train\\(1-day)} & \hybTrnME & \hybTrnRMSE & \hybTrnRMSSE \Tstrut\Bstrut\\[1ex]
+        \hline
+        \makecell{Valid\\(1-day)} & \hybValME & \hybValRMSE & \hybValRMSSE \Tstrut\Bstrut\\[1ex]
+        \hline
+        \makecell{Test\\(1-day)} & \hybTstME & \hybTstRMSE & \hybTstRMSSE \Tstrut\Bstrut\\[1ex]
+        \hline
+        \makecell{Test\\(28-days)} & \hybTstMonME & \hybTstMonRMSE & \hybTstMonRMSSE \Tstrut\Bstrut\\[1ex]
+        \hline
+    \end{tabular}}
+\end{table}
+
+\clearpage
+\section*{Hyperparameters}
+\begin{table}[h!]
+    \centering
+    \caption{LSTM hyperparameters ranges and their optimal values.}
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{ || c | c | c | c || }
+        \hline
+        Hyperparameter & Range & Optimal value & Description \Tstrut\Bstrut \\
+        \hline
+        n\_layers & \lstmParamsRangeNlayers & \lstmParamsNlayers & number of layers \Tstrut\\[1ex]
+        last\_units  & \lstmParamsRangeNunits & \lstmParamsNunits & number of nodes for the last hidden layer \\[1ex]
+        units\_decay & \lstmParamsRangeScale & \lstmParamsScale & decay rate of the number of nodes \\[1ex]
+        learning\_rate & \lstmParamsRangeLR & \lstmParamsLR & learning rate of the model \\[1ex]
+        lr\_decay & \lstmParamsRangeDecay & \lstmParamsDecay & decay rate of the learning rate \\[1ex]
+        dropout\_rate & \lstmParamsRangeDropout & \lstmParamsDropout & dropout rate for the dropout layers \\[1ex]
+        norm & \lstmParamsRangeNorm & \lstmParamsNorm & whether to add batch normalization layers \\[1ex]
+        batch\_size & \lstmParamsRangeBatch & \lstmParamsBatch & batch size for the training phase \\[1ex]
+        steps & \lstmParamsRangeSteps & \lstmParamsSteps & number of time steps for LSTM data \\[1ex]
+        \hline
+    \end{tabular}}
+    \label{tab:lstm_params}
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \caption{MLP hyperparameters ranges and their optimal values.}
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{ || c | c | c | c || }
+        \hline
+        Hyperparameter & Range & Optimal value & Description \Tstrut\Bstrut \\
+        \hline
+        n\_layers & \annParamsRangeNlayers & \annParamsNlayers & number of layers \Tstrut\\[1ex]
+        last\_units  & \annParamsRangeNunits & \annParamsNunits & number of nodes for the last hidden layer \\[1ex]
+        units\_decay & \annParamsRangeScale & \annParamsScale & decay rate of the number of nodes \\[1ex]
+        learning\_rate & \annParamsRangeLR & \annParamsLR & learning rate of the model \\[1ex]
+        lr\_decay & \annParamsRangeDecay & \annParamsDecay & decay rate of the learning rate \\[1ex]
+        dropout\_rate & \annParamsRangeDropout & \annParamsDropout & dropout rate for the dropout layers \\[1ex]
+        norm & \annParamsRangeNorm & \annParamsNorm & whether to add batch normalization layers \\[1ex]
+        batch\_size & \annParamsRangeBatch & \annParamsBatch & batch size for the training phase \\[1ex]
+        \hline
+    \end{tabular}}
+    \label{tab:ann_params}
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \caption{LGBM hyperparameters ranges and their optimal values.}
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{ || c | c | c | c || }
+        \hline
+        Hyperparameter & Range & Optimal value & Description \Tstrut\Bstrut \\
+        \hline
+        learning\_rate & \lgbmParamsRangeLR & \lgbmParamsLR & learning rate of the model \Tstrut\\[1ex]
+        feature\_fraction & \lgbmParamsRangeFeatFrac & \lgbmParamsFeatFrac & fraction of features used to train each tree \\[1ex]
+        lambda\_l2 & \lgbmParamsRangeLambda & \lgbmParamsLambda & value of lambda for L2 regularization \\[1ex]
+        num\_leaves & \lgbmParamsRangeNleaves & \lgbmParamsNleaves & maximum number of leaves in one tree \\[1ex]
+        min\_data\_in\_leaf & \lgbmParamsRangeMinData & \lgbmParamsMinData & Minimum number of data in each leaf \\[1ex]
+        \hline
+    \end{tabular}}
+    \label{tab:lgbm_params}
+\end{table}

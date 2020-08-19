@@ -1,0 +1,43 @@
+Numerous statistical and deep learning methods have been employed in the past for forecasting sales.
+Linear statistical models, such as multivariate linear regression, which make predictions based on the historical relationship between different influential factors and the demand, have the advantage of being efficient. 
+However, these linear models perform well for linear problems, where the relationship between the dependent variable and one or more independent variables is linear with a constant rate of change, and hence fail to capture the nonlinear relationships and describe the complexity of the supply chain \cite{c5}.
+Similarly, basic univariate models, such as ARIMA, which consider the data as a time-series, are also unable to describe the complexity of the supply chain since they are only capable of capturing linear relationships in the data \cite{c5, c1}.
+On the other hand, nonlinear statistical models used for sales forecasting include Bayesian networks, support vector machines, and Markov chains. 
+Unlike linear models, these models are able to learn complex nonlinear relationships from the data.
+In a study done in \cite{c10}, a Random Forest model was used to forecast Major League Baseball game ticket sales.
+Their approach consisted of a dynamic month-ahead forecasting strategy, where the data is updated every month. 
+Their results showed that their proposed RF model slightly outperforms their baseline model, which they chose to be an Ordinary Least Squares (OLS) regression model.
+However, even though nonlinear statistical models have a high capability of solving complex problems, selecting the right model for a certain problem is a difficult task, which requires expert knowledge of statistical models. 
+Moreover, these methods are usually found to perform worse compared to deep learning methods \cite{c5}. 
+
+Deep learning methods are able to automatically extract important features and have been found to obtain better results compared to statistical models \cite{c5}. 
+The self-organizing and self-adjusting capabilities of Artificial Neural Networks (ANN) allows them to solve complex nonlinear problems \cite{c7}.  
+In a study done by \cite{c9}, a Multi-Layer Perceptron (MLP) was used to predict the monthly sale volumes of a Polish company, which imports fabric on a monthly basis, based on the previous three months.
+The MLP contained three input neurons, a single hidden layer with 15 neurons, as well as one output neuron, and was able to achieve a high accuracy on the data with a Root-Mean-Square Error (RMSE) of 3.34e-11.
+However, even though ANNs excel at solving complex problems, they lack the ability to interpolate and predict long-term sequences \cite{c7}.
+Alternatively, deep learning methods, such as LSTM, are able to preserve past information and capture the temporal relationships in the data \cite{c6}.
+However, even though deep learning methods can improve the accuracy of the predictions compared to statistical models, it is much more challenging to interpolate and draw conclusions from their results \cite{c5, c9}. 
+
+In a study done in \cite{c11}, the performances of ARIMA, MLP, and LSTM models were compared for forecasting and predicting cash flow.
+Interest Opportunity Cost (IOC), which is a measure based on financial concepts and allows finance-specific comparison of the models, was used in MLP and LSTM as the error function to be optimized.
+According to their results, LSTM was able to obtain the minimum error of 0.09, compared to MLP and ARIMA with an error of 0.10 and 0.23, respectively.
+The cash flow data exhibited a strong weekly pattern that assisted LSTM in its predictions. 
+However, due to the small amount of data available (3 years), variances caused by holidays and other special events could not be explained.
+
+On a separate note, many methods do not take into account external variables and factors, such as price changes and promotions and have been shown to only perform well in periods without the influence of any external factors \cite{c2, c3}. 
+In practice, in order to incorporate the effects of promotions on the sales, many retailers use a base-times-lift approach, where the sales are first forecasted based on a simple time-series and then adjusted based on the incoming promotions \cite{c4}. 
+Recent studies have focused on optimizing these adjustments, which are made based on promotions and other external factors \cite{c4}. 
+In an alternative approach, hybrid models have been used in order to take advantage of the strengths of different models together, which helps capture both the temporal information in the data, as well as the correlation between the demand and the external factors \cite{c5, c8}. 
+The complex behaviour of a time-series cannot be explained by a single model if, for example, the time-series contains both linear and nonlinear correlations \cite{c12}.
+Hybrid models are usually constructed in a sequential manner, where the first component is fitted to the data first, and then the second component is fitted to the residuals of the first component \cite{c12}.
+The residuals of a model contain the information that could not be captured by that model \cite{c8}.
+However, hybrid models are not guaranteed to perform better than single models and model selection is still a crucial aspect of hybrid models \cite{c12}.
+
+The study done by \cite{c8} presents an example of a hybrid model used for forecasting. 
+In this study, an LSTM model is combined with a Random Forest model to create a hybrid model for forecasting sales of a store with one online and 11 offline sale channels.
+In the hybrid model, LSTM is applied first to capture the linear and non-linear temporal information from the data. 
+Next, the residuals from the LSTM are used as the dependant variable and the external variables are used as the independent variable in a Random Forest model in order to capture the non-temporal relationships in the data. 
+Another challenge to address is the modeling of sales across multiple channels. 
+One approach would be to model each channel separately, however, this approach will eliminate the aggregate demand information from the data. 
+Therefore, this study forecasted the demand of a product based on its order origin (online vs. offline) instead in order to sustain the aggregate demand information.
+Their results showed that the hybrid model performed better than its two components, LSTM and RF, individually. 

@@ -1,0 +1,104 @@
+\documentclass[12pt,letterpaper]{ryerson}
+
+% fix the colors of dept_sales figure.
+% fix scaling of state_sales figure.
+
+\input{variables}
+\interdisplaylinepenalty = 2500
+
+
+\usepackage[inline]{enumitem}
+\PassOptionsToPackage{hyphens}{url}
+% \usepackage[hyphens]{url}
+\usepackage{hyperref} 
+% \usepackage{subfig}
+\usepackage{graphicx}
+\usepackage{array, makecell}
+\usepackage{wrapfig}
+\usepackage{setspace}
+\usepackage[page]{appendix}
+\usepackage{blindtext}
+\usepackage[font=small,labelfont=bf,skip=5pt]{caption}
+\usepackage{charter}
+\usepackage{float}
+\input{insbox.tex}
+\usepackage{titlesec}
+\usepackage{apptools}
+
+\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}   
+\titlespacing*{\chapter}{0pt}{-10pt}{25pt}
+
+\renewcommand{\ttdefault}{Computer Modern}
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
+
+
+\setAuthor{Moeen Bagheri}
+\setTitle{\textbf{Walmart Multi-Step Sales Forecasting}}
+\setThesisDegree{Master of Science (MSc)}
+\setUniversity{Ryerson University}
+\setDepartment{Data Science and Analytics}
+\setLocation{Toronto, Ontario, Canada}
+\setThesisYear{2020}
+
+\setAuthorsDeclaration{
+I hereby declare that I am the sole author of this thesis. This is a true copy of the thesis, including any required final revisions, as accepted by my examiners. \newline
+
+\noindent I authorize Ryerson University to lend this thesis to other institutions or individuals for the purpose of scholarly research. \newline
+
+\noindent I further authorize Ryerson University to reproduce this thesis by photocopying or by other means, in total or in part, at the request of other institutions or individuals for the purpose of scholarly research. \newline
+
+\noindent I understand that my thesis may be made electronically available to the public. \newline
+
+\noindent Moeen Bagheri
+}
+
+\setAbstract{
+\input{chapters/0_abstract}
+}
+\setAcknowledgements{acknowledgements}
+% \setDedication{dedication}
+
+\begin{document}
+\begin{ryerson}
+\chapter{Introduction}
+\input{chapters/1_Introduction}
+
+\chapter{Literature Review}
+\input{chapters/2_literature_review}
+
+
+\chapter{Exploratory Data Analysis}
+\input{chapters/3_exploratory_data_analysis}
+
+
+\chapter{Methodology}
+\input{chapters/4_methodology}
+
+
+\chapter{Results}
+\input{chapters/5_results}
+
+
+\chapter{Discussion}
+\input{chapters/6_discussion}
+
+
+\chapter{Conclusions and Future Work}
+\input{chapters/7_conclusions}
+
+
+\end{ryerson}
+
+
+\begin{appendices}
+
+\input{appendix/tables}
+\input{appendix/figures}
+
+\end{appendices}
+
+\bibliographystyle{ieeetr}
+\bibliography{references}
+
+\end{document}
