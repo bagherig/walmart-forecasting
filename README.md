@@ -1,4 +1,4 @@
-**THE M5 COMPETITION**
+**Multi-Step Sales Forecasting of Walmart Products**
 
 The goal of this project is to provide **28-days** ahead point forecasts for **30490** various items sold by **Walmart**.
 
