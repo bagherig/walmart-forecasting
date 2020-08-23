@@ -75,6 +75,12 @@ For example, the lag 7 of the sales at time-step \(t\) for an item will be its s
 In addition to the lag features, we will introduce rolling means and rolling standard deviations of the sales with various sliding-window sizes in order to help the models learn from the time-series data.
 
 \subsection*{Experiment 2}
+\begin{wrapfigure}[11]{r}{0.45\textwidth}
+    \vspace{-8.5mm}
+    \fbox{\includegraphics[width=0.43\textwidth]{figures/results/hyb_summary.PNG}}
+    \captionof{figure}{Structure of the hybrid model.}
+    \label{fig:hyb_summary}
+\end{wrapfigure}
 For the second experiment, a hybrid model will be constructed and its performance will be compared with the performances of its two components.
 There are two elements in the dataset that must be considered when constructing the model's architecture.
 The first element is the time-series data and the second element is all other data, such as promotions and holidays, that are considered to be external factors and might have an influence on the time-series data.
@@ -84,9 +90,10 @@ The second component of the hybrid model will serve to learn from the external f
 Specifically, the second component will predict the difference in LSTM's predictions and actual demand based on the external factors.
 To elaborate, assume we want to predict the demand for a time period, \(t \geq 1\), with the actual demand data, \(Y_t\), known. 
 If the LSTM model makes predictions, \(\hat{y_t}\), for this time period, then the difference in the LSTM's predictions and the actual demand is calculated as:
-\[\Delta y_t = Y_t - \hat{y_t}\]
+\[\Delta y_t = Y_t - \hat{y_t} \vspace{-2mm}\]
 This difference, \(\Delta y_t\) will be used as the independent variable(s) in the second component of the hybrid model, along with the external factors as the dependant variables. The second component will then be trained to predict this difference, \(\Delta \hat{y_t}\), based on the external factors. At last, the final forecast, \(\hat{Y_t}\), will be obtained by aggregating the predictions of the two model components \cite{c8}:
-\[\hat{Y_t} = \hat{y_t} + \Delta \hat{y_t}\]
+\vspace{-5mm}
+\[\hat{Y_t} = \hat{y_t} + \Delta \hat{y_t} \vspace{-5mm}\]
 The study done in \cite{c8} has already used a Random Forest (RF) network as the second component for forecasting demands of a multi-channel retail, and they were able to achieve very accurate predictions.
 In this study, we will use the best performing model between MLP and LGBM as the second component of the hybrid model. 
 Similar to random forest, LGBM is a tree-based learning model, however, LGBM uses gradient boosting to enhance the performance of the model, whereas random forest uses bagging.

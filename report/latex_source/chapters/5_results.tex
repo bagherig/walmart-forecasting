@@ -64,9 +64,11 @@ Table \ref{tab:lstm_params} shows the range of values that each hyperparameter w
 
 \section{Multilayer Perceptron}
 \begin{wrapfigure}{r}{0.5\textwidth}
+    \vspace{-5mm}
     \fbox{\includegraphics[width=0.47\textwidth]{figures/results/ann_summary.PNG}}
     \captionof{table}{A summary of the MLP's structure.}
     \label{tab:ann_summary}
+    \vspace{-5mm}
 \end{wrapfigure}
 A summary of the MLP model's structure is shown in Table \ref{tab:ann_summary}.
 The RMSE of the MLP model on the training, validation, and test sets were \annTrnRMSE{}, \annValRMSE{}, and \annTstRMSE{}, respectively.
@@ -130,6 +132,7 @@ Moreover, the number of leaves for the model was chosen to be \lgbmParamsNleaves
 \section{LSTM-LGBM Hybrid}
 An LSTM model was chosen as the first component of the hybrid model in order to learn from the sales time-series data. 
 Moreover, the best performing singular model between MLP and LGBM was used as the second component of the hybrid model.
+Figure \ref{fig:hyb_summary} shows a summary of the hybrid model's structure.
 Additionally, the optimal hyperparameters found previously for each singular model were used as the hyperparameters for each component.
 The proposed hybrid model was able to obtain an RMSE of \hybTrnRMSE{} on the training set, \hybValRMSE{} on the validation set, and \hybTstRMSE{} on the test set for the 1-day ahead point forecasts.
 These performances correspond to an RMSSE of \hybTrnRMSSE{}, \hybValRMSSE{}, and \hybTstRMSSE{} on the training, validation, and test sets, respectively.
