@@ -110,13 +110,13 @@ Moreover, the sales for the \texttt{Foods} category seem to have a lot of oscill
     \label{fig:sales_rev_states}
     \vspace{-20pt}
 \end{wrapfigure}
+
 Another factor to examine is whether there is any difference in the number of units sold and revenue earned between various states.
 Figure \ref{fig:sales_rev_states} compares the total unit sales and revenue earned in each state. 
 Since the number of stores is not constant between the states, the values for each state have been normalized by the number of stores in that state.
 By examining the pie charts we see that, on average, the three states have about the same number of unit sales and revenue earned per store, however, the store in state of California are, on average, performing slightly better compared to the stores in Texas and Wisconsin. 
 Furthermore, Figure \ref{fig:state_sales} shows that the state California has more oscillations in its sales compared to the other states.
-
-\begin{figure}[b!]
+\begin{figure}[H]
     \centering
     \captionsetup{width=0.98\textwidth}
     \fbox{\includegraphics[width=0.98\textwidth]{figures/exploratory_data_analysis/state_sales.png}}
@@ -140,8 +140,7 @@ The bar chart in figure \ref{fig:sales_rev_stores} compares the number of unit s
 From this figure, we can see that store \texttt{CA\_3} has the highest number of unit sales and revenue earned, and store \texttt{CA\_4} has the lowest number of unit sales and revenue earned.
 We can further confirm this by examining the time-series of the number of sales per store, shown in Figure \ref{fig:store_sales}.
 Moreover, this figure shows that store \texttt{CA\_3} has a lot more volatility in its sales than the other stores.
-
-\begin{figure}[b!]
+\begin{figure}[H]
     \centering
     \fbox{\includegraphics[width=0.98\textwidth]{figures/exploratory_data_analysis/store_sales.png}}
     \caption{30-day moving average of sales per store.}
@@ -156,15 +155,14 @@ Moreover, this figure shows that store \texttt{CA\_3} has a lot more volatility 
     \captionsetup{width=0.52\textwidth}
     \fbox{\includegraphics[width=0.52\textwidth]{figures/exploratory_data_analysis/sales_rev_depts.png}}
     \caption{Proportion of units sold and revenue earned per department.}
-    \label{fig:depts_rev_stores}
+    \label{fig:sales_rev_depts}
     \vspace{-10pt}
 \end{wrapfigure}
 There are a total of seven departments in the dataset. 
 There are three departments for the \texttt{FOODS} category, two departments for the \texttt{HOBBIES} category, and two departments for the \texttt{HOUSEHOLD} category.
-The number of unit sales and revenue earned in each department is compared in Figure \ref{fig:sales_rev_depts}
-The bar chart shows that .... .
-Moreover, Figure \ref{fig:dept_sales} shows a 30-day moving average of the number of sales per department, which shows that the \textit{FOODS\_3} department has a higher number of unit sales, as well as a higher volatility compared to the other departments.
-
+The number of unit sales and revenue earned in each department is compared in Figure \ref{fig:sales_rev_depts}.
+The bar chart shows that the \textit{FOODS\_3} department has the highest number of sales and revenue, followed by the \textit{HOUSEHOLD\_1} department.
+Moreover, Figure \ref{fig:dept_sales} shows a 30-day moving average of the number of sales per department, which indicates that the \textit{FOODS\_3} department also has a higher volatility compared to the other departments.
 \begin{figure}[H]
     \centering
     \fbox{\includegraphics[width=0.98\textwidth]{figures/exploratory_data_analysis/dept_sales.png}}

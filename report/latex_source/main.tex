@@ -1,8 +1,5 @@
 \documentclass[12pt,letterpaper]{ryerson}
 
-% fix the colors of dept_sales figure.
-% fix scaling of state_sales figure.
-
 \input{variables}
 \interdisplaylinepenalty = 2500
 
@@ -14,7 +11,7 @@
 \usepackage{array, makecell}
 \usepackage{wrapfig}
 \usepackage{setspace}
-\usepackage[page]{appendix}
+\usepackage[title]{appendix}
 \usepackage{blindtext}
 \usepackage[font=small,labelfont=bf,skip=5pt]{caption}
 \usepackage{charter}
@@ -22,6 +19,7 @@
 \input{insbox.tex}
 \usepackage{titlesec}
 \usepackage{apptools}
+\usepackage{tabularx}
 
 \titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}   
 \titlespacing*{\chapter}{0pt}{-10pt}{25pt}
@@ -30,6 +28,8 @@
 \newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
 \newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
 
+\AtAppendix{\titleformat{\chapter}[block]{\LARGE\bfseries}{\appendixname~\thechapter:}{0.333em}{}%
+\titlespacing*{\chapter}{0pt}{-20pt}{40pt}}
 
 \setAuthor{Moeen Bagheri}
 \setTitle{\textbf{Multi-Step Sales Forecasting of Walmart Products}}
@@ -90,13 +90,11 @@ I hereby declare that I am the sole author of this MRP. This is a true copy of t
 
 \end{ryerson}
 
-
 \begin{appendices}
-
+\end{appendices}
+\appendix
 \input{appendix/tables}
 \input{appendix/figures}
-
-\end{appendices}
 
 \bibliographystyle{ieeetr}
 \bibliography{references}

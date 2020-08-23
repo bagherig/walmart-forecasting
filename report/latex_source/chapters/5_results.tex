@@ -1,9 +1,10 @@
 The following four models were constructed: 
 \begin{enumerate}
+    \singlespacing{
     \item Long Short-Term Memory (LSTM)
     \item Multi-Layer Perceptron (MLP)
     \item LightGBM (LGBM)
-    \item LSTM-LGBM Hybrid
+    \item LSTM-LGBM hybrid}
 \end{enumerate}
 Bayesian optimization was used to optimize the hyperparameters of the models within a given range of values.
 The optimization process consisted of a few rounds of exploration, where new points are randomly explored within the available space, and many rounds of exploitation, where Bayesian optimization is done to find the optimal hyperparameters.
@@ -18,15 +19,17 @@ From the results, it can be seen that the LGBM model outperforms the other model
 In the rest of this chapter, the results of hyperparameter optimization and the performance of each model on the training, validation, and test sets will be discussed in detail. 
 
 \section{Long Short-Term Memory}
-\InsertBoxR{3}{
+\InsertBoxR{2}{
     \parbox{0.5\linewidth}{
-    \vspace{4mm}
-    \captionsetup{width=0.49\textwidth}
-    \fbox{\includegraphics[width=0.47\textwidth]{figures/results/lstm_summary.PNG}}
-    \captionof{figure}{A summary of the LSTM's structure.}
-    \label{fig:lstm_summary}}}[3]
-Figure \ref{fig:lstm_summary} shows a summary the LSTM model's structure. 
-The LSTM model was able to achieve an RMSE of \lstmTrnRMSE{} on the training set, \lstmValRMSE{} on the validation set, and \lstmTstRMSE{} on the test set, when predicting one day ahead. 
+    \vspace{2mm}
+    \captionsetup{width=0.48\textwidth}
+    \fbox{\includegraphics[width=0.48\textwidth]{figures/results/lstm_summary.PNG}}
+    \captionof{table}{A summary of the LSTM's structure.}
+    \label{tab:lstm_summary}}}[3]
+
+Table \ref{tab:lstm_summary} shows a summary the LSTM model's structure. 
+Moreover, the performance of the LSTM model is summarized in Table \ref{tab:lstm_results}.
+The LSTM model was able to achieve an RMSE of \lstmTrnRMSE{} on the training set, \lstmValRMSE{} on the validation set, and \lstmTstRMSE{} on the test set, when predicting one day ahead.
 Moreover, the RMSE of the model on the test set for 28-days ahead forecasts was \lstmTstMonRMSE{}.
 Figure \ref{subfig:lstm_sample1} shows the 1-day ahead predictions of the LSTM model versus the actual sale values for the last 28 days of the training set, as well as the entire validation and test sets, which shows that the model was able to learn the weekly pattern presented in the time-series data.
 The 28-days ahead predictions of the model on the test set are also shown in Figure \ref{subfig:lstm_sample28}.
@@ -43,39 +46,61 @@ The dropout rate was optimized to be \lstmParamsDropout{}, however, no batch nor
 Finally, the learning rate was optimized to be \lstmParamsLR{} with a decay rate of \lstmParamsDecay{}. 
 Table \ref{tab:lstm_params} shows the range of values that each hyperparameter was optimized over, as well as the optimized values.
 
+\begin{table}[t]
+    \centering
+    \begin{tabularx}{0.98\textwidth}{ X  >{\centering\arraybackslash}X  >{\centering\arraybackslash}X  >{\centering\arraybackslash}X }
+        \hline
+        Dataset & ME & RMSE & RMSSE \Tstrut\Bstrut \\
+        \hline
+        Train (1-day) & \lstmTrnME & \lstmTrnRMSE & \lstmTrnRMSSE \Tstrut\Bstrut\\[1ex]
+        Valid (1-day) & \lstmValME & \lstmValRMSE & \lstmValRMSSE \Tstrut\Bstrut\\[1ex]
+        Test (1-day) & \lstmTstME & \lstmTstRMSE & \lstmTstRMSSE \Tstrut\Bstrut\\[1ex]
+        Test (28-days) & \lstmTstMonME & \lstmTstMonRMSE & \lstmTstMonRMSSE \Tstrut\Bstrut\\[1ex]
+        \hline
+    \end{tabularx}
+    \caption{The evaluation metrics of the LSTM model.}
+    \label{tab:lstm_results}
+\end{table}
 
 \section{Multilayer Perceptron}
-% \begin{wrapfigure}{r}{0.5\textwidth}
-%     \vspace{-5pt}
-%     \centering
-%     \captionsetup{width=0.47\textwidth}
-%     \fbox{\includegraphics[width=0.47\textwidth]{figures/results/ann_summary.PNG}}
-%     \caption{A summary of the MLP's structure.}
-%     \label{fig:ann_summary}
-%     \vspace{-10pt}
-% \end{wrapfigure}
-\InsertBoxR{3}{
-    \parbox{0.5\linewidth}{
-    \vspace{2mm}
+\begin{wrapfigure}{r}{0.5\textwidth}
     \fbox{\includegraphics[width=0.47\textwidth]{figures/results/ann_summary.PNG}}
-    \captionof{figure}{A summary of the MLP's structure.}
-    \label{fig:ann_summary}}}[3]
-A summary of the MLP model's structure is shown in Figure \ref{fig:ann_summary}.
+    \captionof{table}{A summary of the MLP's structure.}
+    \label{tab:ann_summary}
+\end{wrapfigure}
+A summary of the MLP model's structure is shown in Table \ref{tab:ann_summary}.
 The RMSE of the MLP model on the training, validation, and test sets were \annTrnRMSE{}, \annValRMSE{}, and \annTstRMSE{}, respectively.
 Figure \ref{fig:ann_curve} shows the RMSE of the MLP model at each epoch on the training and validation sets.
 This learning curve shows that most of the learning was done on the first iteration, and that the model had a difficult time learning useful information that will generalize well on the validation set after the first iteration.
 The RMSE of the model exhibits a lot of oscillations, with the minimum validation error occurring at epoch 52.
 Moreover, the MLP model was able to achieve an RMSSE of \annTstMonRMSSE{} for the 28-days ahead forecasts and was able to perform around 18.9\% better than the naive model.
 Furthermore, the ME of the model on the test set was \annTstME{}, which means that the model has a tendency to under-forecast the target sale values.
+Table \ref{tab:ann_results} shows the performance of the MLP model on each dataset.
 
 The range of values that each hyperparameter of the model was optimized over, as well as their optimized values are shown in Table \ref{tab:ann_params}. 
 The optimized MLP model contained four hidden fully-connected layers with 159, 228, 326, and 467 nodes, respectively.
 Moreover, the optimized model did not include any batch normalization layers but had a dropout layer with a rate of \annParamsDropout{} after each fully-connected layer.
 Additionally, for the training phase, the learning rate was optimized to be \annParamsLR{} with a decay rate of \annParamsDecay{} and the training batch size was optimized to be \annParamsBatch{}.
 
+\begin{table}[t]
+    \centering
+    \begin{tabularx}{0.98\textwidth}{ X  >{\centering\arraybackslash}X  >{\centering\arraybackslash}X  >{\centering\arraybackslash}X }
+        \hline
+        Dataset & ME & RMSE & RMSSE \Tstrut\Bstrut \\
+        \hline
+        Train (1-day) & \annTrnME & \annTrnRMSE & \annTrnRMSSE \Tstrut\Bstrut\\[1ex]
+        Valid (1-day) & \annValME & \annValRMSE & \annValRMSSE \Tstrut\Bstrut\\[1ex]
+        Test (1-day) & \annTstME & \annTstRMSE & \annTstRMSSE \Tstrut\Bstrut\\[1ex]
+        Test (28-days) & \annTstMonME & \annTstMonRMSE & \annTstMonRMSSE \Tstrut\Bstrut\\[1ex]
+        \hline
+    \end{tabularx}
+    \caption{The evaluation metrics of the MLP model.}
+    \label{tab:ann_results}
+\end{table}
 
 \section{LightGBM}
-The LGBM model was able to achieve an RMSE of \lgbmTrnRMSE{}, \lgbmValRMSE{}, and \lgbmTstRMSE{} on the training, validation, and test sets, respectively.
+The performance of the LGBM model is summarized in Table \ref{tab:lgbm_results}.
+The model was able to achieve an RMSE of \lgbmTrnRMSE{}, \lgbmValRMSE{}, and \lgbmTstRMSE{} on the training, validation, and test sets, respectively.
 The LGBM model was able to achieve the best performance on the test set compared to the other models.
 From the learning curve of the model, shown in Figure \ref{fig:lgbm_curve}, it can be seen that the model's error plateaus around epoch 30, however, the model still continues to learn at a very low rate until epoch 122, where it reaches its best validation error, and then starts to overfit on the training set.
 In addition, the ME and RMSSE of the 28-days ahead forecasts on the test set were \lgbmTstMonME{} and \lgbmTstMonRMSSE{}. respectively.
@@ -86,6 +111,21 @@ Table \ref{tab:lgbm_params} shows the range of values that each hyperparameter w
 The final LGBM model had a learning rate of \lgbmParamsLR{}, with \lgbmParamsFeatFrac{} fraction of features used to train each tree, and a lambda value of \lgbmParamsLambda{} for L2 regularization.
 Moreover, the number of leaves for the model was chosen to be \lgbmParamsNleaves{} with a minimum data of \lgbmParamsMinData{} in each leaf.
 
+\begin{table}[t]
+    \centering
+    \begin{tabularx}{0.98\textwidth}{ X  >{\centering\arraybackslash}X  >{\centering\arraybackslash}X  >{\centering\arraybackslash}X }
+        \hline
+        Dataset & ME & RMSE & RMSSE \Tstrut\Bstrut \\
+        \hline
+        Train (1-day) & \lgbmTrnME & \lgbmTrnRMSE & \lgbmTrnRMSSE \Tstrut\Bstrut\\[1ex]
+        Valid (1-day) & \lgbmValME & \lgbmValRMSE & \lgbmValRMSSE \Tstrut\Bstrut\\[1ex]
+        Test (1-day) & \lgbmTstME & \lgbmTstRMSE & \lgbmTstRMSSE \Tstrut\Bstrut\\[1ex]
+        Test (28-days) & \lgbmTstMonME & \lgbmTstMonRMSE & \lgbmTstMonRMSSE \Tstrut\Bstrut\\[1ex]
+        \hline
+    \end{tabularx}
+    \caption{The evaluation metrics of the LGBM model.}
+    \label{tab:lgbm_results}
+\end{table}
 
 \section{LSTM-LGBM Hybrid}
 An LSTM model was chosen as the first component of the hybrid model in order to learn from the sales time-series data. 
@@ -97,3 +137,20 @@ Moreover, the RMSE and RMSSE of the hybrid model for the 28-days ahead forecasts
 Even though the hybrid model performed slightly worse than the singular LSTM model on the 1-day ahead forecasts, the hybrid model was able to obtain a slightly better performance on the 28-days ahead predictions, which shows that the second component, LGBM, was able to help counteract the effects of error propagation, which can be confirmed by comparing Figures \ref{subfig:lstm_sample28} and \ref{subfig:hyb_sample28}. 
 On the other hand, the hybrid model was not able to beat the performance of the singular LGBM model.
 Moreover, the ME of the model for the 28-days ahead forecasts on the test set was negative with a value of \hybTstMonME{}, which shows that the model is slightly under-forecasting the targets sale values.
+Table \ref{tab:hyb_results} shows a summary of the performance of the hybrid model.
+
+\begin{table}[t]
+    \centering
+    \begin{tabularx}{0.98\textwidth}{ X  >{\centering\arraybackslash}X  >{\centering\arraybackslash}X  >{\centering\arraybackslash}X }
+        \hline
+        Dataset & ME & RMSE & RMSSE \Tstrut\Bstrut \\
+        \hline
+        Train (1-day) & \hybTrnME & \hybTrnRMSE & \hybTrnRMSSE \Tstrut\Bstrut\\[1ex]
+        Valid (1-day) & \hybValME & \hybValRMSE & \hybValRMSSE \Tstrut\Bstrut\\[1ex]
+        Test (1-day) & \hybTstME & \hybTstRMSE & \hybTstRMSSE \Tstrut\Bstrut\\[1ex]
+        Test (28-days) & \hybTstMonME & \hybTstMonRMSE & \hybTstMonRMSSE \Tstrut\Bstrut\\[1ex]
+        \hline
+    \end{tabularx}
+    \caption{The evaluation metrics of the hybrid LSTM-LGBM model.}
+    \label{tab:hyb_results}
+\end{table}

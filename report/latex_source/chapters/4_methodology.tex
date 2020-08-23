@@ -68,7 +68,7 @@ Hence, this is the method that will be used in this project to deal with multi-s
 In the rest of this section, we will talk about the two experiments that will be performed in this project.
 
 \subsection*{Experiment 1}
-Three singular models (LSTM, MLP, and LGBM) will be constructed and their performances will be evaluated and compared for a 28-days point forecast. 
+Three singular models (LSTM, MLP, and LGBM) will be constructed and their performances will be evaluated and compared for 28-days ahead point forecasts. 
 In order to help the MLP and LGBM models learn the seasonality from the time-series data and look more than one step in the past, we will introduce lag features in the dataset. 
 To produce lag features, we will shift the sales data to the future by a fixed number of days. 
 For example, the lag 7 of the sales at time-step \(t\) for an item will be its sales value at time-step \(t-7\). 

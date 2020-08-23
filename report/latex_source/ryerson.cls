@@ -211,7 +211,7 @@
 \RequirePackage{graphicx}
 \RequirePackage[scriptsize]{caption}
 \RequirePackage{subcaption}
-\RequirePackage{charter} 
+\RequirePackage[bitstream-charter]{mathdesign}
 \RequirePackage{IEEEtrantools}
 \RequirePackage{sectsty}
 \RequirePackage{csquotes}
