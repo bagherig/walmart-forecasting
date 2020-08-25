@@ -1,7 +1,7 @@
 The hyperparameters of the models were optimized using Bayesian optimization.
 Due to the very large dataset and the time constraint, all models were run for 100 iterations with an early stopping rounds of 10 during the optimization phase. 
 However, during the training phase, all models were run for 1000 iterations with an early stopping rounds of 20, in order to maximize the learning done by the models.
-On another note, for the LSTM and MLP models, optimizing the number of layers and the number of nodes per layer at the same time using Bayesian optimization is not a straight forward task.
+On another note, for the LSTM and MLP models, optimizing the number of layers and the number of nodes per layer at the same time using Bayesian optimization is not a straightforward task.
 In order to optimize these hyperparameters, Bayesian optimization was given a specific model structure, in which the number of nodes decrease by a certain factor when going from the last hidden layer to the first.
 The Bayesian optimization was then used to optimize the number of layers, the number of nodes for the last hidden layer, as well as the decay rate of the number of nodes.
 As a result, Baysian optimization did not have full flexibility over the model's structure. 
@@ -9,7 +9,7 @@ For example, a model with three layers and 64, 128, 128 nodes per layer cannot b
 Moreover, different model structures have different learning patterns depending on their complexity. 
 Simple models are able to learn quickly but plateau at a higher error value, whereas complex models learn slowly but can plateau at a lower error value.
 Since the models were only ran for 100 iterations and 10 early stopping rounds during the optimization phase, it is possible that a better but more complex model did not have enough time to plateau.
-Therefore, a better model can possibly be found by giving more flexibility over the structure of the model, exploring a higher range of values for each hyperparamter, as well as increasing the number of iterations and early stopping rounds during the optimization phase.
+Therefore, a better model can possibly be found by giving more flexibility over the structure of the model, exploring a higher range of values for each hyperparameter, as well as increasing the number of iterations and early stopping rounds during the optimization phase.
 
 Furthermore, looking at Figures \ref{fig:lstm_worst}, \ref{fig:ann_worst}, \ref{fig:lgbm_worst}, and \ref{fig:hyb_worst}, we can see that the models have a difficult time forecasting the sales for the \texttt{FOODS\_3} department.
 This shows that items in the \texttt{FOODS\_3} department do not follow the same patterns as the other items.
@@ -23,7 +23,7 @@ This can be due to the fact that recurrent neural networks, such as LSTM, requir
 However, in our case, the data contains many zeros, which can significantly hinder the performance of the LSTM model.
 Moreover, the LSTM model was very sensitive to the values of its hyperparameters, and hence, it requires extensive hyperparameter optimization.
 On the other hand, LightGBM models are easy to train and are able to achieve a relatively good performance without much hyperparameter optimization.
-Although the results of the LGBM model are note worthy and show the strength of boosting methods in improving the overall performance, it is possible that a well optimized LSTM model can outperform the LGBM model, however, this would require a considerable amount of hyperparameter optimization.
+Although the results of the LGBM model are noteworthy and show the strength of boosting methods in improving the overall performance, it is possible that a well optimized LSTM model can outperform the LGBM model, however, this would require a considerable amount of hyperparameter optimization.
 
 Similarly, the hybrid model was not able to meet expectations. 
 The performance of the hybrid model seemed to be very closely tied to the performance of its first component, LSTM, which is possibly due to the fact that the first component receives the main sales data and hence provides the main predictions.
@@ -61,6 +61,6 @@ However, we also tried providing the MLP and LGBM models with lag and rolling me
 Even though this boosted the performances on the 1-day ahead forecasts, it significantly hindered the performances on the 28-days ahead forecasts.
 Although, it is important to note the importance of recent sales in the foretelling the future sales. 
 Having knowledge of recent sale values can greatly help with the predictions, however, this comes with the trade-off of error propagation when forecasting longer horizons.
-Therefore, further optimization can be possibly done by providing the models with lag and rolling mean/std features that are within the forecasting horizon, and balancing the aforementioned trade-off between recency of these features and error propagation.
+Therefore, further optimization can be possibly done by providing the models with lag and rolling mean/std features that are within the forecasting horizon and balancing the aforementioned trade-off between recency of these features and error propagation.
 Moreover, the reason that the 1-day and 28-days ahead forecasts of the MLP and LGBM models are the same is the fact that all lag and rolling mean/std features are shifted by the value of the forecasting horizon, and so actual sale values are available for the entire forecasting horizon.
 However, this is not the case for the LSTM model, since the LSTM model will have to depend on its own predictions when it has a large forecasting horizon, and hence the LSTM and hybrid models obtain different 1-day and 28-days ahead predictions.

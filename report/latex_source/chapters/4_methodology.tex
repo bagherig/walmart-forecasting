@@ -5,7 +5,7 @@ Specifically, we aim to compare the performance of deep learning and machine lea
 For deep learning methods, we will compare the performance of Recurrent Neural Networks (RNN) with Artificial Neural Networks (ANN). 
 Specifically, the recurrent neural network will be a Long Short-Term Memory (LSTM) model, and the artificial neural network will be a Multi-Layer Perceptron (MLP) model.
 Moreover, the machine learning method was chosen to be a LightGBM (LGBM) model. 
-Additionally, we will create a hybrid model, consisting of the LSTM model and the best performing model between the MLP and LGBM models, and check if it is able to improve the performance compared to the sigular models.
+Additionally, we will create a hybrid model, consisting of the LSTM model and the best performing model between the MLP and LGBM models, and check if it is able to improve the performance compared to the singular models.
 
 
 \section{Selection of the Response Variable}
@@ -53,7 +53,7 @@ The validation set will include a time-series data for the next 28 days, from da
 Finally, the test set will include the last 28 days of time-series data, from day 1914 to day 1941, which will be used to evaluate and compare the models and assess their generalization on unseen data. 
 
 Since the dataset contains the sales data for 3049 products sold across ten different stores, we are dealing with a multi-channel problem. 
-It is important to take into account the effects of aggregate demand on the sales, as well as the effects of one items on the sales of another item.
+It is important to take into account the effects of aggregate demand on the sales, as well as the effects of one item on the sales of another item.
 Hence, rather than training separate models for each item, a single model will be created for all items.
 Furthermore, since we want to forecast the daily sales for the next 28 days, we are dealing with a multi-step forecasting problem. 
 There are three main methods for dealing with multi-step forecasting problems.
@@ -68,7 +68,7 @@ Hence, this is the method that will be used in this project to deal with multi-s
 In the rest of this section, we will talk about the two experiments that will be performed in this project.
 
 \subsection*{Experiment 1}
-Three singular models (LSTM, MLP, and LGBM) will be constructed and their performances will be evaluated and compared for 28-days ahead point forecasts. 
+Three singular models (LSTM, MLP, and LGBM) will be constructed, and their performances will be evaluated and compared for 28-days ahead point forecasts. 
 In order to help the MLP and LGBM models learn the seasonality from the time-series data and look more than one step in the past, we will introduce lag features in the dataset. 
 To produce lag features, we will shift the sales data to the future by a fixed number of days. 
 For example, the lag 7 of the sales at time-step \(t\) for an item will be its sales value at time-step \(t-7\). 

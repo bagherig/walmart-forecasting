@@ -36,7 +36,7 @@ However, hybrid models are not guaranteed to perform better than single models a
 The study done by \cite{c8} presents an example of a hybrid model used for forecasting. 
 In this study, an LSTM model is combined with a Random Forest model to create a hybrid model for forecasting sales of a store with one online and 11 offline sale channels.
 In the hybrid model, LSTM is applied first to capture the linear and non-linear temporal information from the data. 
-Next, the residuals from the LSTM are used as the dependant variable and the external variables are used as the independent variable in a Random Forest model in order to capture the non-temporal relationships in the data. 
+Next, the residuals from the LSTM are used as the dependent variable and the external variables are used as the independent variable in a Random Forest model in order to capture the non-temporal relationships in the data. 
 Another challenge to address is the modeling of sales across multiple channels. 
 One approach would be to model each channel separately, however, this approach will eliminate the aggregate demand information from the data. 
 Therefore, this study forecasted the demand of a product based on its order origin (online vs. offline) instead in order to sustain the aggregate demand information.
