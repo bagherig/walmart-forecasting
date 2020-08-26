@@ -15,7 +15,7 @@ Furthermore, looking at Figures \ref{fig:lstm_worst}, \ref{fig:ann_worst}, \ref{
 This shows that items in the \texttt{FOODS\_3} department do not follow the same patterns as the other items.
 This can be confirmed by examining Figure \ref{fig:dept_sales}, which shows the difference in the patterns of sales between the \texttt{FOODS\_3} department and the other departments.
 Not only do the items in the \texttt{FOODS\_3} department have higher sales, but they also show a seasonality pattern that is less visible in the other departments.
-Hence, a possible way to improve forecasting accuracies is to train a separate model for the items belonging to the \texttt{FOODS\_3} department.
+Hence, a possible way to improve forecasting accuracies is to train a separate model for items belonging to the \texttt{FOODS\_3} department.
 
 LSTM models have a high reputation in learning from time-series data. 
 However, the LSTM model did not perform as well as expected in this project.
@@ -26,7 +26,7 @@ On the other hand, LightGBM models are easy to train and are able to achieve a r
 Although the results of the LGBM model are noteworthy and show the strength of boosting methods in improving the overall performance, it is possible that a well optimized LSTM model can outperform the LGBM model, however, this would require a considerable amount of hyperparameter optimization.
 
 Similarly, the hybrid model was not able to meet expectations. 
-The performance of the hybrid model seemed to be very closely tied to the performance of its first component, LSTM, which is possibly due to the fact that the first component receives the main sales data and hence provides the main predictions.
+The performance of the hybrid model seemed to be very closely tied to the performance of its first component, LSTM, which is possibly due to the fact that the first component receives the main sales data and hence carries out the main learning in the model.
 Moreover, although the second component, LGBM, was able to slightly improve the accuracy of the 28-days ahead forecasts, it was not able to learn much from the residual data that was provided and seemed to have a difficult time finding a pattern and predicting the error of the LSTM model.
 Therefore, it could be possible for the hybrid model to beat the performance of its two individual components, however, its first component will need to perform at least as good as its second component when used as a singular model, since the first component will be doing the main learning in the hybrid model.
 Furthermore, another possible way to improve the performance of the hybrid model is to perform hyperparameter optimization on its two components.
@@ -41,7 +41,7 @@ In order to help with the predictions for the singular LSTM model, seven other f
 The seven features used from the dataset include the current day number, weekday, month, year, SNAP days for California, SNAP days for Texas, and SNAP days for Wisconsin. 
 Moreover, two additional features were created from the available events data, which represented whether an event exists on the day of the prediction, and whether an event exists the day after the prediction.
 The reason that the model was provided with information about the events of the next day is that people tend to go shopping before an event rather than the day of the event.
-For example, in case of Halloween, a lot of people tend to buy their candies before Halloween starts rather than on the same day.
+For example, in case of Halloween, a lot of people tend to buy their candies before Halloween starts rather than on the day of Halloween.
 Moreover, we also tried providing the model with the price information of each item, as well as the exact name and type of each event, however, the performance of the LSTM model was significantly hindered, and hence, these features were omitted.
 This is possible due to the large number of features added, since there is a new feature added for the price of each item, and hence, we are essentially doubling our feature set.
 
@@ -61,6 +61,6 @@ However, we also tried providing the MLP and LGBM models with lag and rolling me
 Even though this boosted the performances on the 1-day ahead forecasts, it significantly hindered the performances on the 28-days ahead forecasts.
 Although, it is important to note the importance of recent sales in the foretelling the future sales. 
 Having knowledge of recent sale values can greatly help with the predictions, however, this comes with the trade-off of error propagation when forecasting longer horizons.
-Therefore, further optimization can be possibly done by providing the models with lag and rolling mean/std features that are within the forecasting horizon and balancing the aforementioned trade-off between recency of these features and error propagation.
+Therefore, further optimization can be possibly done by providing the models with lag and rolling mean/std features that are within the forecasting horizon and balancing the aforementioned trade-off between the recency of these features and error propagation.
 Moreover, the reason that the 1-day and 28-days ahead forecasts of the MLP and LGBM models are the same is the fact that all lag and rolling mean/std features are shifted by the value of the forecasting horizon, and so actual sale values are available for the entire forecasting horizon.
 However, this is not the case for the LSTM model, since the LSTM model will have to depend on its own predictions when it has a large forecasting horizon, and hence the LSTM and hybrid models obtain different 1-day and 28-days ahead predictions.

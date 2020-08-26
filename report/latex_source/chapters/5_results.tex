@@ -6,7 +6,7 @@ The following four models were constructed:
     \item LightGBM (LGBM)
     \item LSTM-LGBM hybrid}
 \end{enumerate}
-Bayesian optimization was used to optimize the hyperparameters of the models within a given range of values.
+Bayesian optimization was used to optimize the hyperparameters of the singular models within a given range of values.
 The optimization process consisted of a few rounds of exploration, where new points are randomly explored within the available space, and many rounds of exploitation, where Bayesian optimization is done to find the optimal hyperparameters.
 The performances of the optimized models were evaluated on the training, validation and test sets for a 1-day ahead point forecast and were compared to the performance of a naive model.
 Moreover, the performance of each optimized model was evaluated on the test set for a 28-days ahead point forecast and compared to the naive model.
@@ -131,13 +131,13 @@ Moreover, the number of leaves for the model was chosen to be \lgbmParamsNleaves
 
 \section{LSTM-LGBM Hybrid}
 An LSTM model was chosen as the first component of the hybrid model in order to learn from the sales time-series data. 
-Moreover, the best performing singular model between MLP and LGBM was used as the second component of the hybrid model.
+Moreover, since the LGBM model outperformed the MLP model, it was chosen as the second component of the hybrid model.
 Figure \ref{fig:hyb_summary} shows a summary of the hybrid model's structure.
 Additionally, the optimal hyperparameters found previously for each singular model were used as the hyperparameters for each component.
 The proposed hybrid model was able to obtain an RMSE of \hybTrnRMSE{} on the training set, \hybValRMSE{} on the validation set, and \hybTstRMSE{} on the test set for the 1-day ahead point forecasts.
 These performances correspond to an RMSSE of \hybTrnRMSSE{}, \hybValRMSSE{}, and \hybTstRMSSE{} on the training, validation, and test sets, respectively.
 Moreover, the RMSE and RMSSE of the hybrid model for the 28-days ahead forecasts on the test set were \hybTstMonRMSE{} and \hybTstMonRMSSE{}, respectively, which shows that the model was able to perform around 20.3\% better than the naive model.
-Even though the hybrid model performed slightly worse than the singular LSTM model on the 1-day ahead forecasts, the hybrid model was able to obtain a slightly better performance on the 28-days ahead predictions, which shows that the second component, LGBM, was able to help counteract the effects of error propagation, which can be confirmed by comparing Figures \ref{subfig:lstm_sample28} and \ref{subfig:hyb_sample28}. 
+Even though the hybrid model performed slightly worse than the singular LSTM model on the 1-day ahead forecasts, the hybrid model was able to obtain a better performance on the 28-days ahead predictions, which shows that the second component, LGBM, was able to help counteract the effects of error propagation, which can be confirmed by comparing their predictions, shown in Figures \ref{subfig:lstm_sample28} and \ref{subfig:hyb_sample28}. 
 On the other hand, the hybrid model was not able to beat the performance of the singular LGBM model.
 Moreover, the ME of the model for the 28-days ahead forecasts on the test set was negative with a value of \hybTstMonME{}, which shows that the model is slightly under-forecasting the targets sale values.
 Table \ref{tab:hyb_results} shows a summary of the performance of the hybrid model.

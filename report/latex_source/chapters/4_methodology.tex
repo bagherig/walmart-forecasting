@@ -13,9 +13,9 @@ All models will be trained using the Root Mean Square Error (RMSE) as the loss f
 Moreover, the RMSE on the validation set will be used to optimize the hyperparameters of each model.
 On the other hand, in order to evaluate and compare the performances of the models, we will obtain the Root Mean Square Scaled Error (RMSSE) of the models on the test set.
 Compared to RMSE, RMSSE has the advantage of being scale independent, and so it can be used to compare the accuracy of forecasts across time-series with different scales.
-For example, an absolute error of 10 when approximating 100 should have a much higher forecast error than an absolute error of 10 when approximating 1,000,000.
+For example, an absolute error of 10 when approximating 100 should have a much higher forecasting error than an absolute error of 10 when approximating 1,000,000.
 RMSSE is derived from the Mean Absolute Scaled Error (MASE), which is a common measure of accuracy for forecasting problems.
-In order to scale the error, the Mean Squared Error (MSE) of the model is compared to the MSE of a naive model, which predicts the sales at each time-step to be the same as the previous time-step.
+In RMSSE, the Mean Squared Error (MSE) of the model is compared to the MSE of a naive model, which predicts the sales at each time-step to be the same as the previous time-step.
 The original RMSSE uses the in-sample data (training set) for the naive model, since the out of sample data (test set) may not contain enough points to obtain a naive prediction when the forecasting horizon is too short: \cite{yardstick, m5}
 \[RMSSE = \sqrt{\frac{MSE_{\,test, \,model}}{MSE_{\,train, \,naive}}}\]
 However, since in our study we have a forecasting horizon of 28, we do not have to worry about this issue and hence for simplicity, we will use the out of sample data to obtain the MSE of the naive model:
@@ -32,10 +32,12 @@ In addition to RMSSE, the Mean Error (ME) of the models will be obtained in orde
 The following four models will be evaluated and compared in this project.
 
 \begin{enumerate}
-  \item LSTM,
-  \item Artificial Neural Network,
-  \item LightGBM, and
-  \item Hybrid.
+\singlespacing{
+  \item LSTM
+  \item Artificial Neural Network
+  \item LightGBM
+  \item Hybrid
+ }
 \end{enumerate}
 
 The hyperparameters of all models will be optimized using Bayesian Optimization over a given range of hyperparameter values.
@@ -75,13 +77,14 @@ For example, the lag 7 of the sales at time-step \(t\) for an item will be its s
 In addition to the lag features, we will introduce rolling means and rolling standard deviations of the sales with various sliding-window sizes in order to help the models learn from the time-series data.
 
 \subsection*{Experiment 2}
-\begin{wrapfigure}[11]{r}{0.45\textwidth}
+\begin{wrapfigure}[12]{r}{0.48\textwidth}
     \vspace{-8.5mm}
-    \fbox{\includegraphics[width=0.43\textwidth]{figures/results/hyb_summary.PNG}}
+    \fbox{\includegraphics[width=0.46\textwidth]{figures/results/hyb_summary.PNG}}
     \captionof{figure}{Structure of the hybrid model.}
     \label{fig:hyb_summary}
 \end{wrapfigure}
 For the second experiment, a hybrid model will be constructed and its performance will be compared with the performances of its two components.
+A summary of the hybrid model's structure is shown in Figure \ref{fig:hyb_summary}.
 There are two elements in the dataset that must be considered when constructing the model's architecture.
 The first element is the time-series data and the second element is all other data, such as promotions and holidays, that are considered to be external factors and might have an influence on the time-series data.
 Hence, the first component of the hybrid model will be the LSTM network that will learn from the time-series data. 
@@ -89,9 +92,9 @@ LSTM networks are able to handle both the linear and nonlinear demand variations
 The second component of the hybrid model will serve to learn from the external factors. 
 Specifically, the second component will predict the difference in LSTM's predictions and actual demand based on the external factors.
 To elaborate, assume we want to predict the demand for a time period, \(t \geq 1\), with the actual demand data, \(Y_t\), known. 
-If the LSTM model makes predictions, \(\hat{y_t}\), for this time period, then the difference in the LSTM's predictions and the actual demand is calculated as:
+If the LSTM model makes predictions, \(\hat{y_t}\), for this time period, then the difference in the LSTM's predictions and the actual demand, also known as the residual of the model, is calculated as:
 \[\Delta y_t = Y_t - \hat{y_t} \vspace{-2mm}\]
-This difference, \(\Delta y_t\) will be used as the independent variable(s) in the second component of the hybrid model, along with the external factors as the dependant variables. The second component will then be trained to predict this difference, \(\Delta \hat{y_t}\), based on the external factors. At last, the final forecast, \(\hat{Y_t}\), will be obtained by aggregating the predictions of the two model components \cite{c8}:
+This difference, \(\Delta y_t\) will be used as the independent variable in the second component of the hybrid model, along with the external factors as the dependant variables. The second component will then be trained to predict this difference, \(\Delta \hat{y_t}\), based on the external factors. At last, the final forecast, \(\hat{Y_t}\), will be obtained by aggregating the predictions of the two model components \cite{c8}:
 \vspace{-5mm}
 \[\hat{Y_t} = \hat{y_t} + \Delta \hat{y_t} \vspace{-5mm}\]
 The study done in \cite{c8} has already used a Random Forest (RF) network as the second component for forecasting demands of a multi-channel retail, and they were able to achieve very accurate predictions.
@@ -100,6 +103,6 @@ Similar to random forest, LGBM is a tree-based learning model, however, LGBM use
 
 \section{Technologies}
 All models will be created using \texttt{Python}. 
-The LSTM and ANN models will be constructed using the package \texttt{keras} and LGBM will be implemented using the package \texttt{lightgbm}. 
+The LSTM and ANN models will be constructed using the package \texttt{keras}, and the LGBM model will be implemented using the package \texttt{lightgbm}. 
 The Bayesian optimization will be created using the \texttt{bayesian-optimization} package.
 Moreover, other packages, such as \texttt{pandas} and \texttt{scikit-learn}, will be used for data preprocessing and model evaluation.
