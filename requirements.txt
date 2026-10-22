@@ -1,0 +1,9 @@
+bayesian-optimization
+lightgbm
+matplotlib
+numpy
+pandas
+scikit-learn
+tables
+tensorflow
+tqdm
