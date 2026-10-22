@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Kaggle M5 data: download it yourself (see README)
+data/*
+!data/.gitkeep
